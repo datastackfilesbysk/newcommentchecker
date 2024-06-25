@@ -7,7 +7,7 @@ export async function checkDatabaseConnection(client: Client) {
       throw new Error("PostgreSQL client is not available.");
     }
     await client.query("SELECT 1");
-    vscode.window.showInformationMessage("Connected to PostgreSQL database.");
+    //vscode.window.showInformationMessage("Connected to PostgreSQL database.");
   } catch (error: any) {
     vscode.window.showErrorMessage(
       "PostgreSQL database connection error: " +
