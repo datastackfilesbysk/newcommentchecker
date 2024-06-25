@@ -1,0 +1,93 @@
+{
+  "name": "codeCommentReviewer",
+  "displayName": "CodeCommentReviewer",
+  "description": "Effortlessly review and manage comments in your code files with CodeCommentReviewer",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:csharp",
+    "onCommand:codeCommentReviewer.connectToPostgres",
+    "onCommand:codeCommentReviewer.getUserInfo",
+    "onCommand:codeCommentReviewer.savefileinfo",
+    "onCommand:codeCommentReviewer.reviewComments"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeCommentReviewer.reviewComments",
+        "title": "Review Comments"
+      },
+      {
+        "command": "codeCommentReviewer.connectToPostgres",
+        "title": "Connect to PostgreSQL"
+      },
+      {
+        "command": "codeCommentReviewer.getUserInfo",
+        "title": "Get User Info"
+      },
+      {
+        "command": "extension.showProjectInfo",
+        "title": "Show Project Info"
+      },
+      {
+        "command": "extension.triggerProjectInfo",
+        "title": "Trigger Project Info"
+      },
+      {
+        "command": "codeCommentReviewer.savefileinfo",
+        "title": "Save info in  file "
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc && webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test",
+    "start": " cross-env PG_CONNECTION_STRING='postgresql://dsuser:dsuser%40123@20.235.152.4:5432/code_formatting'; node ./dist/extension.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "simple-git": "^3.25.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datastackfilesbysk/newcommentchecker"
+  },
+  "configuration": {
+    "title": "Your Extension Configuration",
+    "properties": {
+      "codeCommentReviewer.databaseConnectionString": {
+        "type": "string",
+        "default": "postgresql://dsuser:dsuser%40123@20.235.152.4:5432/code_formatting",
+        "description": "The connection string for your database"
+      }
+    }
+  }
+}
