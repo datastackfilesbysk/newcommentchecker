@@ -8,8 +8,8 @@ const username = "dsuser";
 const password = "dsuser@123";
 const database = "code_formatting";
 let isConnected: boolean = false;
-const configPath = path.resolve("../../../config.json");
-vscode.window.showInformationMessage("config path :", configPath);
+//const configPath = path.resolve("../../../config.json");
+//vscode.window.showInformationMessage("config path :", configPath);
 async function createClient(): Promise<Client | null> {
   const connectionString = `postgresql://${username}:${encodeURIComponent(
     password
