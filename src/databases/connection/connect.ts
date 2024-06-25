@@ -49,9 +49,9 @@ export async function connectToPostgres() {
     if (client) {
       await client.connect();
       isConnected = true;
-      vscode.window.showInformationMessage(
-        "Initial connection to PostgreSQL database successful."
-      );
+      // vscode.window.showInformationMessage(
+      //   "Initial connection to PostgreSQL database successful."
+      // );
     }
   } catch (error: any) {
     isConnected = false;
